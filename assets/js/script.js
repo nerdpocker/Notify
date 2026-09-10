@@ -28,71 +28,152 @@ const year = date.getFullYear()
 hari.innerHTML = `${dayID()}, ${tgl} ${monthID()} ${year}`
 jam.innerHTML = `${hour}:${minutes}`
 
-// Dirubah 
-const pengirim = "Bucin Stuff";
-const pesan = `Happy mensive, my love. Another month of us, another month of loving you, choosing you, and making little memories together. Thank you for being by my side, for all the laughs, the random moments, and even the little things that make having you in my life so special. I’m so grateful for you, and I hope we get to celebrate many, many more months together. I love you more than words can ever explain, and I’ll keep choosing you, today and always. 🫶🏻`;
+
+// ================================
+// ISI PESAN
+// ================================
+
+const pengirim = "Bucin Stuff"
+
+const pesan = `Happy mensive, my love. Another month of us, another month of loving you, choosing you, and making little memories together. Thank you for being by my side, for all the laughs, the random moments, and even the little things that make having you in my life so special. I’m so grateful for you, and I hope we get to celebrate many, many more months together. I love you more than words can ever explain, and I’ll keep choosing you, today and always. 🫶🏻`
+
 
 if (pengirim) {
-  nama.innerHTML = pengirim;
-  nama1.innerHTML = pengirim;
+  nama.innerHTML = pengirim
+  nama1.innerHTML = pengirim
 } else {
-  nama.innerHTML = "Nama Kamu";
-  nama1.innerHTML = "Nama Kamu";
+  nama.innerHTML = "Nama Kamu"
+  nama1.innerHTML = "Nama Kamu"
 }
 
+
+// ================================
+// TOMBOL MULAI
+// ================================
+
 btnPlay.addEventListener('click', () => {
+
   audio.play()
-  messege1.style.display = "block";
+
+  messege1.style.display = "block"
   messege1.style.transform = "translateX(0)"
-  btnPlay.style.display = "none";
-  hilang1.style.display = "block";
+
+  btnPlay.style.display = "none"
+  hilang1.style.display = "block"
+
 })
 
+
+// ================================
+// TOMBOL LANJUT
+// ================================
+
 hilang1.addEventListener('click', () => {
-  messege1.style.display = "none";
+
+  messege1.style.display = "none"
+
   messege2.style.transform = "translateX(0)"
+
   hilang1.style.display = "none"
   hilang2.style.display = "block"
+
+
   Swal.fire({
     imageUrl: "/assets/img/stiker_mylove.gif",
     imageHeight: 120,
+
     title: 'Tulis nama kamu di sini sayangg',
-    html: `<input type="text" id="login" class="swal2-input" placeholder="Nama Kamu">`,
+
+    html: `
+      <input 
+        type="text" 
+        id="login" 
+        class="swal2-input" 
+        placeholder="Nama Kamu"
+      >
+    `,
+
     confirmButtonText: 'Kirim',
     focusConfirm: false,
+
     preConfirm: () => {
-      const login = Swal.getPopup().querySelector('#login').value
+
+      const login = Swal
+        .getPopup()
+        .querySelector('#login')
+        .value
+
       if (!login) {
-        Swal.showValidationMessage(`Masukin nama kamu sayanggg :(`)
+        Swal.showValidationMessage(
+          `Masukin nama kamu sayanggg :(`
+        )
       }
-      return { login }
+
+      return {
+        login
+      }
     }
+
   }).then((result) => {
-    let i = 0;
-    const speed = 50;
-    const namaAwal = result.value.login.charAt(0)
-    let txt = `Halo, ${result.value.login} sayang, ${pesan}`;
+
+    // Pastikan user benar-benar memasukkan nama
+    if (!result.value || !result.value.login) {
+      return
+    }
+
+    let i = 0
+    const speed = 50
+
+    // ================================
+    // PESAN YANG AKAN DIKETIK
+    // ================================
+
+    const txt = `Halo, ${result.value.login} sayang, ${pesan}`
+
+
+    // ================================
+    // TYPEWRITER
+    // ================================
 
     const typeWriter = () => {
+
       if (i < txt.length) {
-        messege2P.innerHTML += txt.charAt(i);
-        i++;
+
+        messege2P.innerHTML += txt.charAt(i)
+
+        i++
+
         messege2.classList.remove('kelip')
+
         hilang2.style.display = "none"
+
         setTimeout(typeWriter, speed)
+
       } else {
+
         messege2.classList.add('kelip')
-        body.classList.replace('background1', 'background2')
+
+        body.classList.replace(
+          'background1',
+          'background2'
+        )
+
         body.classList.add('muncul')
+
         hilang2.style.display = "block"
       }
     }
-    typeWriter()
 
+    typeWriter()
 
   })
 })
 
-hilang2.addEventListener('click', () => {
-})
 
+// ================================
+// TOMBOL AKHIR
+// ================================
+
+hilang2.addEventListener('click', () => {
+
+})
