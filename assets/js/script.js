@@ -30,7 +30,7 @@ jam.innerHTML = `${hour}:${minutes}`
 
 // Dirubah 
 const pengirim = "Bucin Stuff";
-const pesan = `Pada akhirnya kita berdua menjadi dua orang penjahat: Kamu yang dengan hebatnya bisa mencuri hatiku, begitu juga aku yang berhasil mencuri hatimu`;
+const pesan = `Happy mensive, my love. Another month of us, another month of loving you, choosing you, and making little memories together. Thank you for being by my side, for all the laughs, the random moments, and even the little things that make having you in my life so special. I’m so grateful for you, and I hope we get to celebrate many, many more months together. I love you more than words can ever explain, and I’ll keep choosing you, today and always. 🫶🏻`;
 
 if (pengirim) {
   nama.innerHTML = pengirim;
@@ -71,7 +71,7 @@ hilang1.addEventListener('click', () => {
     let i = 0;
     const speed = 50;
     const namaAwal = result.value.login.charAt(0)
-    let txt = `Halo, ${result.value.login}, Nama kamu berawal dari huruf ${namaAwal.toUpperCase()}, ${pesan}`;
+    let txt = `Halo, ${result.value.login} sayang, ${pesan}`;
 
     const typeWriter = () => {
       if (i < txt.length) {
