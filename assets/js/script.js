@@ -128,7 +128,7 @@ hilang1.addEventListener('click', () => {
     // PESAN YANG AKAN DIKETIK
     // ================================
 
-    const txt = `Halo, ${result.value.login} sayang, ${pesan}`
+    const txt = `Halo, ${result.value.login} sayang. ${pesan}`
 
 
     // ================================
